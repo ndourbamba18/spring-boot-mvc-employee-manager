@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/boo
+tstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Employees List</title>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand mr-4" th:href="@{/}">Employee Management System</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <div class="navbar-nav mr-auto">
+                    <a class="nav-item nav-link" th:href="@{home}">Home</a>
+                    <a class="nav-item nav-link" th:href="@{about}">About Us</a>
+                    <a class="nav-item nav-link" th:href="@{contact}">Contact Us</a>
+                    <a class="nav-item nav-link" th:href="@{employee-form}">Add Employee</a>
+                    <a class="nav-item nav-link" th:href="@{employees-list}">Employees</a>
+                </div>
+                <!-- Navbar Right Side -->
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" th:href="@{login}">Login</a>
+                    <a class="nav-item nav-link" th:href="@{registration}">Register</a>
+                    <!-- -->
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<section>
+    <div class="container mb-4 mt-5">
+        <div class="row mt-5">
+            <div class="col-md-6 m-auto">
+                <!-- SUCCESS MESSAGE -->
+                <div class="mt-5 mb-2" th:if="${param.success}">
+                    <div class="alert alert-success">
+                        You've successfully registered to our awesome to app!
+                    </div>
+                </div>
+                <!-- ERROR MESSAGE -->
+                <div class="mt-5 mb-2" th:if="${param.error}">
+                    <div class="alert alert-danger">
+                        Email exist.
+                    </div>
+                </div>
+                <div class="card mt-5 mb-4">
+                    <div style="background-color: #5f788a; color: #fff; text-align: center;" class="card-header">Register Now</div>
+                    <div class="card-body">
+                        <form method="post" th:action="@{/registration}" th:object="${user}">
+                            <div class="form-group">
+                                <label class="control-label" for="firstName">First Name</label>
+                                <input type="text" name="firstName" id="firstName" th:field="*{firstName}" autofocus="autofocus" class="form-control">
+                                <span th:errors="${user.firstName}"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="lastName">Last Name</label>
+                                <input type="text" name="lastName" id="lastName" th:field="*{lastName}" autofocus="autofocus" class="form-control">
+                                <span th:errors="${user.lastName}"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="email">Email</label>
+                                <input type="email" name="email" id="email" th:field="*{email}" autofocus="autofocus" class="form-control">
+                                <span th:errors="${user.email}"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="password">Password</label>
+                                <input type="password" name="password" id="password" th:field="*{password}" autofocus="autofocus" class="form-control">
+                                <span th:errors="${user.password}"></span>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-info">Register</button>
+                                <span>Already registered? <a href="/" th:href="@{/login}">Login here</a></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="navbar-fixed-bottom mt-5">
+    <hr>
+    <div class="container">
+        <small>
+            Copyright @ 2021
+        </small>
+    </div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+</html>
